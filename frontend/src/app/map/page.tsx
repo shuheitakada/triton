@@ -61,11 +61,15 @@ export default function Map() {
     )
   }
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    search()
+  }
+
   return (
     <>
-      <h1>Map Page</h1>
       {/* 検索フォーム */}
-      <div>
+      <form onSubmit={handleSubmit}>
         <input
           type='text'
           onChange={(e) => setAddress(e.target.value)}
@@ -78,9 +82,9 @@ export default function Map() {
         >
           Search
         </button>
-      </div>
+      </form>
       {/* マップ */}
-      <div style={{ height: '500px', width: '500px' }}>
+      <div style={{ height: '800px', width: '800px' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: API_KEY }}
           defaultCenter={defaultLatLng}
